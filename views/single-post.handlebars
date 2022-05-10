@@ -1,13 +1,13 @@
 <article class="post">
   <div class="title">
-    <h1>"{{post.post_body}}">{{post.title}}</h1> 
-    <span>({{post.post_body}})</span>
+    <h1>"{{post_body}}">{{post.title}}</h1> 
+    <span>({{post_body}})</span>
   </div>
   <div class="meta">
    {{!-- {{post.vote_count}} point(s) by {{post.user.username}} on
     {{post.created_at}}
     | --}}
-    <a href="/post/{{post.id}}">{{post.comments.length}} comment(s)</a>
+  <a href="/post/{{id}}">{{comments.length}} {{format_plural "comment" comments.length}}</a>
   </div>
 </article>
 
@@ -23,18 +23,7 @@
 </form>
 {{/if}}
 
-<div class="comments">
-  {{#each post.comments}}
-  <section class="comment">
-    <div class="meta">
-      {{user.username}} on {{created_at}}
-    </div>
-    <div class="text">
-      {{comment_text}}
-    </div>
-  </section>
-  {{/each}}
-</div>
+{{> comments post.comments}}
 
 {{#if loggedIn}}
 

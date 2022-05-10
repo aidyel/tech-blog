@@ -2,9 +2,11 @@ const express = require('express');
 const routes = require('./controllers');
 const sequelize = require('./config/connection');
 const exphbs = require('express-handlebars');
-const hbs = exphbs.create({});
+const hbs = exphbs.create({helpers});
 const session = require('express-session');
 const path = require('path');
+const helpers = require('./utils/helpers');
+
 
 
 const app = express();
@@ -24,6 +26,8 @@ const sess = {
 app.use(session(sess));
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
+
+
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
