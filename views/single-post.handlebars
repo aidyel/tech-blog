@@ -1,7 +1,7 @@
 <article class="post">
   <div class="title">
-    <h1>"{{post_body}}">{{post.title}}</h1> 
-    <span>({{post_body}})</span>
+    <h1>{{post.title}}</h1> 
+    <span>{{post.post_body}}</span>
   </div>
   <div class="meta">
    {{!-- {{post.vote_count}} point(s) by {{post.user.username}} on
@@ -10,6 +10,18 @@
   <a href="/post/{{id}}">{{comments.length}} {{format_plural "comment" comments.length}}</a>
   </div>
 </article>
+
+{{#if comments}}
+<div >
+  <h3>comments</h3>
+
+{{#each comments}}
+<div>
+  <p>{{comment.body}}</p>
+</div>
+</div>
+{{/each}}
+{{/if}}
 
 {{#if loggedIn}}
 <form class="comment-form">
