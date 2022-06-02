@@ -15,31 +15,32 @@ router.get('/', (req, res) => {
             
         },
         
-        attributes: [
-          'id',
-          'post_body',
-          'title',
-          'created_at',
-        ],
-        include: [
-          {
-            model: Comment,
-            attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
-            include: {
-              model: User,
-              attributes: ['username']
-            }
-          },
-          {
-            model: User,
-            attributes: ['username']
-          }
-        ]
+        // attributes: [
+        //   'id',
+        //   'post_body',
+        //   'title',
+        //   'created_at',
+        // ],
+        // include: [
+        //   {
+        //     model: Comment,
+        //     attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
+        //     include: {
+        //       model: User,
+        //       attributes: ['username']
+        //     }
+        //   },
+        //   {
+        //     model: User,
+        //     attributes: ['username']
+        //   }
+        // ]
       })
         .then(dbPostData => {
           // serialize data before passing to template
-          console.log(dbPostData)
+          console.log({dbPostData})
           const posts = dbPostData.map(post => post.get({ plain: true }));
+          console.log(posts, 'these are the posts')
           res.render('dashboard', { posts, loggedIn: true });
         })
         .catch(err => {
