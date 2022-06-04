@@ -33,3 +33,6 @@ This application was built so that developers can publish their blog posts and c
 <p><a href="https://www.npmjs.com/package/connect-session-sequelize">connect-session-sequelize
 </a></p>
 
+## Live link 
+
+<p><a href="https://shielded-shore-97774.herokuapp.com"> Live link</a><p>
